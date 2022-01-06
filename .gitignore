@@ -38,14 +38,13 @@ migrations/
 ArquivosXML/
 arquivos/
 setup.py
-apecsul/configs/configs.py
 apecsul/media/imagens/usuarios/
 .env
 .venv/
 *.sqlite3
 env/
 
-#AMAZON pull
-middleware.py
-.SG/configs/*
-wsgi.py
+##AMAZON pull
+##middleware.py
+#.SG/configs/*
+#wsgi.py
