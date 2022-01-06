@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+
+from django.conf.urls import url
+from . import views
+
+app_name = 'cadastro'
+urlpatterns = [
+    # Cliente
+    # cadastro/cliente/adicionar/
+    url(r'cliente/adicionar/$',
+        views.AdicionarClienteView.as_view(), name='addclienteview'),
+    # cadastro/cliente/listaclientes
+    url(r'cliente/listaclientes/$',
+        views.ClientesListView.as_view(), name='listaclientesview'),
+    # cadastro/cliente/editar/
+    url(r'cliente/editar/(?P<pk>[0-9]+)/$',
+        views.EditarClienteView.as_view(), name='editarclienteview'),
+
+    # AJAX:: Informacoes de dada empresa (Ajax request)
+    url(r'infocliente/$', views.InfoCliente.as_view(), name='infocliente'),
+    url(r'selectcliente/', views.SelectFormCliente.as_view(), name='selectcliente'),
+]

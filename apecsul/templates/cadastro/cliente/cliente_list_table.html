@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table id="lista-database" class="table table-bordered table-striped lista-table">
+    <thead>
+      <tr>
+        <th>#ID</th>                   
+        <th>Igreja</th>
+        <th>Pastor</th>
+        <th>Remover</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% if all_clientes%}
+      {% for cliente in all_clientes %}
+      <tr class="clickable-row" data-href="{% url 'cadastro:editarclienteview' cliente.id %}">
+        <td>{{cliente.id}}</td>
+        <td>{{cliente.nome_razao_social}}</td>
+        <td>{{cliente.pastor.all.0.nome|default_if_none:""}}</td>
+        <td class="lista-remove">
+          <input type="checkbox" name="{{cliente.id}}" id="remover-entrada-{{cliente.id}}"/>
+          <label class="remove-entry-label" for="remover-entrada-{{cliente.id}}"></label>
+        </td>
+      </tr>
+      {% endfor %}
+      {%else%}
+      {%endif%}
+    </tbody>
+  </table>
+</div>
