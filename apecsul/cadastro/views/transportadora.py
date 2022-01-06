@@ -2,8 +2,8 @@
 
 from django.urls import reverse_lazy
 
-from apecsul.apps.cadastro.forms import TransportadoraForm, VeiculoFormSet
-from apecsul.apps.cadastro.models import Transportadora, Veiculo
+from apecsul.cadastro.forms import TransportadoraForm, VeiculoFormSet
+from apecsul.cadastro.models import Transportadora, Veiculo
 
 from .base import AdicionarPessoaView, PessoasListView, EditarPessoaView
 

@@ -4,7 +4,7 @@ from django import forms
 from django.forms import inlineformset_factory
 from django.utils.translation import ugettext_lazy as _
 
-from apecsul.apps.cadastro.models import Pessoa, Endereco, Pastor, Filho, Telefone, Email, Site, Banco, Documento
+from apecsul.cadastro.models import Pessoa, Endereco, Pastor, Filho, Telefone, Email, Site, Banco, Documento
 
 
 class EnderecoForm(forms.ModelForm):

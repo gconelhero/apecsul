@@ -8,9 +8,9 @@ from django.urls import path
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apecsul.apps.base.urls')),
-    url(r'^login/', include('apecsul.apps.login.urls')),
-    url(r'^cadastro/', include('apecsul.apps.cadastro.urls')),
+    url(r'^', include('apecsul.base.urls')),
+    url(r'^login/', include('apecsul.login.urls')),
+    url(r'^cadastro/', include('apecsul.cadastro.urls')),
 ]
 
 if DEBUG is True:

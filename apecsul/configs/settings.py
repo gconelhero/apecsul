@@ -33,9 +33,9 @@ INSTALLED_APPS = [
     
 
     # apecsul apps:
-    'apecsul.apps.base',
-    'apecsul.apps.login',
-    'apecsul.apps.cadastro',
+    'apecsul.base',
+    'apecsul.login',
+    'apecsul.cadastro',
     
 ]
 
@@ -67,9 +67,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # contexto para a versao do sige
-                'apecsul.apps.base.context_version.sige_version',
+                'apecsul.base.context_version.sige_version',
                 # contexto para a foto de perfil do usuario
-                'apecsul.apps.login.context_user.foto_usuario',
+                'apecsul.login.context_user.foto_usuario',
             ],
         },
     },

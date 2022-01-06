@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.core import serializers
 
-from apecsul.apps.cadastro.models import Pessoa, Pastor, Cliente, Endereco
+from apecsul.cadastro.models import Pessoa, Pastor, Cliente, Endereco
 
 
 import json

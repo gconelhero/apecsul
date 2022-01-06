@@ -3,10 +3,9 @@
 from django.urls import reverse_lazy
 from django.db.models import F
 
-from apecsul.apps.base.custom_views import CustomCreateView, CustomListView, CustomUpdateView
-from apecsul.apps.cadastro.forms import ProdutoForm, CategoriaForm, UnidadeForm, MarcaForm
-from apecsul.apps.cadastro.models import Produto, Categoria, Unidade, Marca, Fornecedor
-from apecsul.apps.estoque.models import ItensMovimento, EntradaEstoque, ProdutoEstocado
+from apecsul.base.custom_views import CustomCreateView, CustomListView, CustomUpdateView
+from apecsul.cadastro.forms import ProdutoForm, CategoriaForm, UnidadeForm, MarcaForm
+from apecsul.cadastro.models import Produto, Categoria, Unidade, Marca, Fornecedor
 
 from datetime import datetime
 

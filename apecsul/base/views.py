@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import F
 
-from apecsul.apps.cadastro.models import Cliente
+from apecsul.cadastro.models import Cliente
 
 from datetime import datetime
 

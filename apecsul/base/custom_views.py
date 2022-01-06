@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 
 from django.shortcuts import redirect
 
-from apecsul.apps.base.views_mixins import CheckPermissionMixin, FormValidationMessageMixin
+from apecsul.base.views_mixins import CheckPermissionMixin, FormValidationMessageMixin
 
 
 class CustomView(CheckPermissionMixin, View):

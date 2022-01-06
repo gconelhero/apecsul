@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from apecsul.apps.base.custom_views import CustomCreateView, CustomListView, CustomUpdateView
+from apecsul.base.custom_views import CustomCreateView, CustomListView, CustomUpdateView
 
-from apecsul.apps.cadastro.forms import PessoaJuridicaForm, PessoaFisicaForm, EnderecoFormSet, PastorFormSet, FilhoFormSet, TelefoneFormSet, EmailFormSet, \
+from apecsul.cadastro.forms import PessoaJuridicaForm, PessoaFisicaForm, EnderecoFormSet, PastorFormSet, FilhoFormSet, TelefoneFormSet, EmailFormSet, \
     SiteFormSet, BancoFormSet, DocumentoFormSet
-from apecsul.apps.cadastro.models import PessoaFisica, PessoaJuridica, Endereco, Pastor, Filho, Telefone, Email, Site, Banco, Documento
+from apecsul.cadastro.models import PessoaFisica, PessoaJuridica, Endereco, Pastor, Filho, Telefone, Email, Site, Banco, Documento
 
 
 class AdicionarPessoaView(CustomCreateView):

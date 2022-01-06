@@ -2,8 +2,8 @@
 
 from django.urls import reverse_lazy
 
-from apecsul.apps.cadastro.forms import ClienteForm, cliente
-from apecsul.apps.cadastro.models import Cliente
+from apecsul.cadastro.forms import ClienteForm, cliente
+from apecsul.cadastro.models import Cliente
 
 from .base import AdicionarPessoaView, PessoasListView, EditarPessoaView
 

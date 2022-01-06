@@ -3,7 +3,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from apecsul.apps.cadastro.models import PessoaJuridica, PessoaFisica
+from apecsul.cadastro.models import PessoaJuridica, PessoaFisica
 
 
 class PessoaJuridicaForm(forms.ModelForm):
