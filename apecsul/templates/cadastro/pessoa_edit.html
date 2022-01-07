@@ -70,7 +70,7 @@
 
                     {% include 'formset/formset.html' with formset=pastor_form title='Pastor' %}
 
-                    {% include 'formset/formset.html' with formset=filho_form title='Filhos' %}
+                    <!--{% include 'formset/formset.html' with formset=filho_form title='Filhos' %}-->
                   </div>
 
                   <!-- #Tab fazenda -->
@@ -84,15 +84,6 @@
 
                   </div>
                   <!-- #Tab contato -->
-
-                  <!-- Tab banco -->
-                  <div role="tabpanel" class="tab-pane formset-tab" id="tab_banco">
-
-                    {% include 'formset/formset.html' with formset=banco_form title='Dados Bancários' %}
-
-                  </div>
-                  <!-- #Tab banco -->
-
 
                   {% if tipo_pessoa == 'cliente' and object %}
                   <!-- #Tab VENDAS -->

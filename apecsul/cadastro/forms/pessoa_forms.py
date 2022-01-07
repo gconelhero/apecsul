@@ -19,18 +19,15 @@ class PessoaJuridicaForm(forms.ModelForm):
 
     class Meta:
         model = PessoaJuridica
-        fields = ('cnpj', 'data_cadastro',
-                  'data_fundacao')
+        fields = ('cnpj', 'data_fundacao')
 
         widgets = {
             'cnpj': forms.TextInput(attrs={'class': 'form-control'}),
-            'data_cadastro': forms.DateInput(attrs={'class': 'form-control'}),
-            'data_fundacao': forms.DateInput(attrs={'class': 'form-control'}),
+            'data_fundacao': forms.DateInput(attrs={'class': 'form-control datepicker'}),
         }
         labels = {
             'cnpj': _('CNPJ'),
             'data_fundacao': _('Data de Fundação'),
-            'data_cadastro': _('Data de Cadastro'),
         }
 
 

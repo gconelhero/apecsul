@@ -28,11 +28,22 @@
 <div class="col-sm-6">
   <div class="form-group">
     <div class="form-line">
+      <label>{{pessoa_juridica_form.data_fundacao.label}}</label>
+      {% if pessoa_juridica_form.data_fundacao.errors %}<label class="error">{% for error in pessoa_juridica_form.data_fundacao.errors %}{{error}}{% endfor %}</label>{% endif %}
+      {{pessoa_juridica_form.data_fundacao}}
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6">
+  <div class="form-group">
+    <div class="form-line">
       <label>{{form.informacoes_adicionais.label}}</label>
       {% if form.informacoes_adicionais.errors %}<label class="error">{% for error in form.informacoes_adicionais.errors %}{{error}}{% endfor %}</label>{% endif %}
       {{form.informacoes_adicionais}}
     </div>
   </div>
 </div>
+
 </div>
 </div>

@@ -3,8 +3,8 @@
 from apecsul.base.custom_views import CustomCreateView, CustomListView, CustomUpdateView
 
 from apecsul.cadastro.forms import PessoaJuridicaForm, PessoaFisicaForm, EnderecoFormSet, PastorFormSet, FilhoFormSet, TelefoneFormSet, EmailFormSet, \
-    SiteFormSet, BancoFormSet, DocumentoFormSet
-from apecsul.cadastro.models import PessoaFisica, PessoaJuridica, Endereco, Pastor, Filho, Telefone, Email, Site, Banco, Documento
+    SiteFormSet
+from apecsul.cadastro.models import PessoaFisica, PessoaJuridica, Endereco, Pastor, Filho, Telefone, Email, Site
 
 
 class AdicionarPessoaView(CustomCreateView):
@@ -29,12 +29,6 @@ class AdicionarPessoaView(CustomCreateView):
         filho_form = FilhoFormSet(prefix='filho_form')
         filho_form.can_delete = False
 
-        banco_form = BancoFormSet(prefix='banco_form')
-        banco_form.can_delete = False
-
-        documento_form = DocumentoFormSet(prefix='documento_form')
-        documento_form.can_delete = False
-
         telefone_form = TelefoneFormSet(prefix='telefone_form')
         telefone_form.can_delete = False
         
@@ -52,7 +46,6 @@ class AdicionarPessoaView(CustomCreateView):
                                                              endereco_form=endereco_form,
                                                              pastor_form=pastor_form,
                                                              filho_form=filho_form,
-                                                             banco_form=banco_form,
                                                              formsets=formsets,
                                                              veiculo_form=veiculo_form))
 
@@ -65,9 +58,6 @@ class AdicionarPessoaView(CustomCreateView):
         pastor_form = PastorFormSet(request.POST, prefix='pastor_form')
         filho_form = FilhoFormSet(request.POST, prefix='filho_form')
         
-        banco_form = BancoFormSet(request.POST, prefix='banco_form')
-        documento_form = DocumentoFormSet(request.POST, prefix='documento_form')
-
         telefone_form = TelefoneFormSet(request.POST, prefix='telefone_form')
         email_form = EmailFormSet(request.POST, prefix='email_form')
         site_form = SiteFormSet(request.POST, prefix='site_form')
@@ -94,7 +84,6 @@ class AdicionarPessoaView(CustomCreateView):
                 endereco_form.is_valid() and
                 pastor_form.is_valid() and
                 filho_form.is_valid() and
-                banco_form.is_valid() and
                     all(extra_form.is_valid() for extra_form in extra_forms)):
 
                 self.object.save()
@@ -114,12 +103,6 @@ class AdicionarPessoaView(CustomCreateView):
                 
                 filho_form.instance = self.object
                 filho = filho_form.save()
-
-                # Salvar informacoes bancarias
-                banco_form.instance = self.object
-                ban = banco_form.save()
-                if len(ban):
-                    self.object.banco_padrao = ban[0]
 
                 # salvar telefone
                 telefone_form.instance = self.object
@@ -192,11 +175,6 @@ class EditarPessoaView(CustomUpdateView):
             instance=self.object, prefix='pastor_form')
         filho_form = FilhoFormSet(
             instance=self.object, prefix='filho_form')
-        banco_form = BancoFormSet(
-            instance=self.object, prefix='banco_form')
-        documento_form = DocumentoFormSet(
-            instance=self.object, prefix='documento_form')
-
         telefone_form = TelefoneFormSet(
             instance=self.object, prefix='telefone_form')
         email_form = EmailFormSet(
@@ -216,10 +194,6 @@ class EditarPessoaView(CustomUpdateView):
             email_form.extra = 0
         if Site.objects.filter(pessoa_site=self.object.pk).count():
             site_form.extra = 0
-        if Banco.objects.filter(pessoa_banco=self.object.pk).count():
-            banco_form.extra = 0
-        if Documento.objects.filter(pessoa_documento=self.object.pk).count():
-            documento_form.extra = 0
 
         formsets = [telefone_form, email_form, site_form]
 
@@ -230,7 +204,6 @@ class EditarPessoaView(CustomUpdateView):
                                                              endereco_form=endereco_form,
                                                              pastor_form=pastor_form,
                                                              filho_form=filho_form,
-                                                             banco_form=banco_form,
                                                              formsets=formsets,
                                                              object=self.object))
 
@@ -245,10 +218,6 @@ class EditarPessoaView(CustomUpdateView):
             request.POST, prefix='pastor_form', instance=self.object)
         filho_form = FilhoFormSet(
             request.POST, prefix='filho_form', instance=self.object)
-        banco_form = BancoFormSet(
-            request.POST, prefix='banco_form', instance=self.object)
-        documento_form = DocumentoFormSet(
-            request.POST, prefix='documento_form', instance=self.object)
 
         telefone_form = TelefoneFormSet(
             request.POST, prefix='telefone_form', instance=self.object)
@@ -277,7 +246,6 @@ class EditarPessoaView(CustomUpdateView):
                 endereco_form.is_valid() and
                 pastor_form.is_valid() and
                 filho_form.is_valid() and
-                banco_form.is_valid() and
                     all(extra_form.is_valid() for extra_form in extra_forms)):
 
                 self.object = form.save(commit=False)
@@ -309,13 +277,6 @@ class EditarPessoaView(CustomUpdateView):
 
                 filho_form.instance = self.object
                 filho = filho_form.save()
-
-                # Salvar informacoes bancarias
-                banco_form.instance = self.object
-                ban = banco_form.save()
-                if len(ban):
-                    self.object.banco_padrao = ban[0]
-
 
                 # Salvar telefone
                 telefone_form.instance = self.object
@@ -360,7 +321,6 @@ class EditarPessoaView(CustomUpdateView):
                                  endereco_form=endereco_form,
                                  pastor_form=pastor_form,
                                  filho_form=filho_form,
-                                 banco_form=banco_form,
                                  formsets=formsets,
                                  veiculo_form=veiculo_form,
                                  logo_file=logo_file)

@@ -45,6 +45,6 @@ apecsul/media/imagens/usuarios/
 env/
 
 ##AMAZON pull
-##middleware.py
-#.SG/configs/*
-#wsgi.py
+middleware.py
+.SG/configs/*
+wsgi.py

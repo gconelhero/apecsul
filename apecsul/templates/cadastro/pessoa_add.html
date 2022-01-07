@@ -53,14 +53,6 @@
                   </div>
                   <!-- #Tab endereco -->
 
-                  <!-- Tab pastor -->
-                  <div role="tabpanel" class="tab-pane formset-tab" id="tab_pastor">
-
-                    {% include 'formset/formset.html' with formset=pastor_form title='Pastor' %}
-                    {% include 'formset/formset.html' with formset=filho_form title='Filho' %}
-
-                  </div>
-
                   <!-- Tab contato -->
                   <div role="tabpanel" class="tab-pane formset-tab" id="tab_contato">
                     {% for formset in formsets %}
@@ -70,13 +62,14 @@
                   </div>
                   <!-- #Tab contato -->
 
-                  <!-- Tab banco -->
-                  <div role="tabpanel" class="tab-pane formset-tab" id="tab_banco">
-
-                    {% include 'formset/formset.html' with formset=banco_form title='Dados Bancários' %}
+                  <!-- Tab pastor -->
+                  <div role="tabpanel" class="tab-pane formset-tab" id="tab_pastor">
+                      
+                    {% include 'formset/formset.html' with formset=pastor_form title='Pastor' %}
+                    
+                    <!--{% include 'formset/formset.html' with formset=filho_form title='Filhos' %}-->
 
                   </div>
-                  <!-- #Tab banco -->
 
                 </div>
 

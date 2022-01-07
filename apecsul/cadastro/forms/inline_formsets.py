@@ -4,7 +4,7 @@ from django import forms
 from django.forms import inlineformset_factory
 from django.utils.translation import ugettext_lazy as _
 
-from apecsul.cadastro.models import Pessoa, Endereco, Pastor, Filho, Telefone, Email, Site, Banco, Documento
+from apecsul.cadastro.models import Pessoa, Endereco, Pastor, Filho, Telefone, Email, Site
 
 
 class EnderecoForm(forms.ModelForm):
@@ -38,29 +38,20 @@ class PastorForm(forms.ModelForm):
 
     class Meta:
         model = Pastor
-        fields = ('nome','cpf','rg','endereco','bairro','uf', 'cep', 'municipio', 'cmun')
+        fields = ('ministerio','nome','cpf','rg')
 
         labels = {
+            'ministerio': _("Ministério"),
             'nome': _("Nome"),
             'cpf': _("CPF"),
             'rg': _("RG"),
-            'endereco': _("Endereço"),
-            'bairro': _("Bairro"),
-            'municipio': _("Município (sem acentuação)"),
-            'cmun': _("Código do município"),
-            'cep': _("CEP (Apenas dígitos)"),
-            'uf': _("UF"),
         }
+
         widgets = {
+            'ministerio': forms.Select(attrs={'class': 'form-control'}),
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'cpf': forms.TextInput(attrs={'class': 'form-control'}),
             'rg': forms.TextInput(attrs={'class': 'form-control'}),
-            'endereco': forms.TextInput(attrs={'class': 'form-control'}),
-            'bairro': forms.TextInput(attrs={'class': 'form-control'}),
-            'municipio': forms.Select(attrs={'class': 'form-control'}),
-            'cmun': forms.TextInput(attrs={'class': 'form-control'}),
-            'cep': forms.TextInput(attrs={'class': 'form-control'}),
-            'uf': forms.Select(attrs={'class': 'form-control'}),
         }
 
 
@@ -119,40 +110,6 @@ class SiteForm(forms.ModelForm):
         }
 
 
-class BancoForm(forms.ModelForm):
-
-    class Meta:
-        model = Banco
-        fields = ('banco', 'agencia', 'conta', 'digito',)
-        labels = {
-            'banco': _('Banco'),
-            'agencia': _('Agência'),
-            'conta': _('Conta'),
-            'digito': _('Dígito'),
-        }
-        widgets = {
-            'banco': forms.Select(attrs={'class': 'form-control'}),
-            'agencia': forms.TextInput(attrs={'class': 'form-control'}),
-            'conta': forms.TextInput(attrs={'class': 'form-control'}),
-            'digito': forms.TextInput(attrs={'class': 'form-control'}),
-        }
-
-
-class DocumentoForm(forms.ModelForm):
-
-    class Meta:
-        model = Documento
-        fields = ('tipo', 'documento',)
-        labels = {
-            'tipo': _('Tipo'),
-            'documento': _('Documento'),
-        }
-        widgets = {
-            'tipo': forms.TextInput(attrs={'class': 'form-control'}),
-            'documento': forms.TextInput(attrs={'class': 'form-control'}),
-        }
-
-
 EnderecoFormSet = inlineformset_factory(
     Pessoa, Endereco, form=EnderecoForm, extra=1, can_delete=True)
 PastorFormSet = inlineformset_factory(
@@ -165,7 +122,3 @@ EmailFormSet = inlineformset_factory(
     Pessoa, Email, form=EmailForm, extra=1, can_delete=True)
 SiteFormSet = inlineformset_factory(
     Pessoa, Site, form=SiteForm, extra=1, can_delete=True)
-BancoFormSet = inlineformset_factory(
-    Pessoa, Banco, form=BancoForm, extra=1, can_delete=True)
-DocumentoFormSet = inlineformset_factory(
-    Pessoa, Documento, form=DocumentoForm, extra=1, can_delete=True)

@@ -4255,42 +4255,39 @@ $(document).ready(function(){
 });
 
 $('a.show_bar').on('click', function(){
+    if (screen.width > 767) {
     $('body.theme').attr('class','theme');
     $('div.navbar-brand').attr('style','margin-left: -15px;');
     $(this).attr('style','display: none;');
     localStorage.setItem('menu_open_close','1')
+    }
 });
 
 $('a.close_bar').on('click', function(){
+    if (screen.width > 767) {
     $('body.theme').attr('class','theme ls-closed')
     $('a.show_bar').attr('style','display: block;')
     $('div.navbar-brand').attr('style','margin-left: 20px;')
     localStorage.setItem('menu_open_close','0')
+    }
 })
 
 $('a.close_bar').on('click', function(){
+    if (screen.width > 767) {
     $('body.theme').attr('class','theme ls-closed')
     $('a.show_bar').attr('style','display: block;')
     $('div.navbar-brand').attr('style','margin-left: 20px;')
     localStorage.setItem('menu_open_close','0')
+    }
 })
 
-$(document).ready(function(){
-    ($('#juridica').is(':checked'))
-});
-
-$('#fisica').on('click', function(){
-    $('#nome_razao').text('Nome Completo')
-});
-
-$('#juridica').on('click', function(){
-    $('#nome_razao').text('Razão Social')
-});
-
+// MOBILE
 $('menu-index').attr('class','theme ls-closed')
 
 $(document).ready(function(){
     if (screen.width < 960) {
         $('show_bar').css('display', 'block')
+    }else {
+        $('show_bar').css('display', 'none')
     }
 });

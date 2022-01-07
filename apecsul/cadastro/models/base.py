@@ -7,8 +7,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-from .bancos import BANCOS
-
 ENQUADRAMENTO_FISCAL = [
     ('LR', 'Lucro Real'),
     ('LP', 'Lucro Presumido'),
@@ -118,8 +116,6 @@ class Pessoa(models.Model):
         'cadastro.Site', related_name="sit_padrao", on_delete=models.CASCADE, null=True, blank=True)
     email_padrao = models.ForeignKey(
         'cadastro.Email', related_name="ema_padrao", on_delete=models.CASCADE, null=True, blank=True)
-    banco_padrao = models.ForeignKey(
-        'cadastro.Banco', related_name="ban_padrao", on_delete=models.CASCADE, null=True, blank=True)
 
     # Sobre o objeto
     criado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
@@ -178,8 +174,7 @@ class PessoaJuridica(models.Model):
         Pessoa, on_delete=models.CASCADE, primary_key=True, related_name='pessoa_jur_info')
     cnpj = models.CharField(max_length=32, null=True, blank=True)
     data_fundacao = models.DateField(max_length=32, null=True, blank=True)
-    data_cadastro = models.DateField(max_length=32, null=True, blank=True)
-    
+
     @property
     def format_cnpj(self):
         if self.cnpj:
@@ -235,17 +230,11 @@ class PessoaFisica(models.Model):
 class Pastor(models.Model):
     pastor_id = models.ForeignKey(
         Pessoa, related_name="pastor", on_delete=models.CASCADE)
+    ministerio = models.CharField(max_length=64, null=True, blank=True, choices=(("Pastor", "Pastor"), ("Evangelista", "Evangelista")))
     nome = models.CharField(max_length=64, null=True, blank=True)
     cpf = models.CharField(max_length=64, null=True, blank=True)
     rg = models.CharField(max_length=64, null=True, blank=True)
     nascimento = models.DateField(null=True, blank=True)
-    endereco = models.CharField(max_length=64, null=True, blank=True)
-    bairro = models.CharField(max_length=64, null=True, blank=True)
-    municipio = models.CharField(max_length=64, null=True, blank=True)
-    cmun = models.CharField(max_length=9, null=True, blank=True)
-    cep = models.CharField(max_length=16, null=True, blank=True)
-    uf = models.CharField(max_length=3, null=True,
-                          blank=True, choices=UF_SIGLA)
 
     @property
     def format_cpf(self):
@@ -338,29 +327,3 @@ class Site(models.Model):
         Pessoa, related_name="site", on_delete=models.CASCADE)
     site = models.CharField(max_length=255)
 
-
-class Banco(models.Model):
-    pessoa_banco = models.ForeignKey(
-        Pessoa, related_name="banco", on_delete=models.CASCADE)
-    banco = models.CharField(
-        max_length=3, choices=BANCOS, null=True, blank=True)
-    agencia = models.CharField(max_length=8, null=True, blank=True)
-    conta = models.CharField(max_length=32, null=True, blank=True)
-    digito = models.CharField(max_length=8, null=True, blank=True)
-
-    def __unicode__(self):
-        s = u'%s / %s / %s' % (self.get_banco_display(),
-                               self.agencia, self.conta)
-        return s
-
-    def __str__(self):
-        s = u'%s / %s / %s' % (self.get_banco_display(),
-                               self.agencia, self.conta)
-        return s
-
-
-class Documento(models.Model):
-    pessoa_documento = models.ForeignKey(
-        Pessoa, related_name="documento", on_delete=models.CASCADE)
-    tipo = models.CharField(max_length=32)
-    documento = models.CharField(max_length=255)
