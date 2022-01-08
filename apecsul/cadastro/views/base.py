@@ -26,8 +26,8 @@ class AdicionarPessoaView(CustomCreateView):
         pastor_form = PastorFormSet(prefix='pastor_form')
         pastor_form.can_delete = False
 
-        filho_form = FilhoFormSet(prefix='filho_form')
-        filho_form.can_delete = False
+        #filho_form = FilhoFormSet(prefix='filho_form')
+        #filho_form.can_delete = False
 
         telefone_form = TelefoneFormSet(prefix='telefone_form')
         telefone_form.can_delete = False
@@ -45,7 +45,7 @@ class AdicionarPessoaView(CustomCreateView):
                                                              pessoa_fisica_form=pessoa_fisica_form,
                                                              endereco_form=endereco_form,
                                                              pastor_form=pastor_form,
-                                                             filho_form=filho_form,
+                                                             #filho_form=filho_form,
                                                              formsets=formsets,
                                                              veiculo_form=veiculo_form))
 
@@ -56,7 +56,7 @@ class AdicionarPessoaView(CustomCreateView):
         endereco_form = EnderecoFormSet(request.POST, prefix='endereco_form')
         
         pastor_form = PastorFormSet(request.POST, prefix='pastor_form')
-        filho_form = FilhoFormSet(request.POST, prefix='filho_form')
+        #filho_form = FilhoFormSet(request.POST, prefix='filho_form')
         
         telefone_form = TelefoneFormSet(request.POST, prefix='telefone_form')
         email_form = EmailFormSet(request.POST, prefix='email_form')
@@ -101,8 +101,8 @@ class AdicionarPessoaView(CustomCreateView):
                     #self.object. = faz[0]
                 
                 
-                filho_form.instance = self.object
-                filho = filho_form.save()
+                #filho_form.instance = self.object
+                #filho = filho_form.save()
 
                 # salvar telefone
                 telefone_form.instance = self.object
@@ -143,7 +143,7 @@ class AdicionarPessoaView(CustomCreateView):
                                  pessoa_fisica_form=pessoa_fisica_form,
                                  endereco_form=endereco_form,
                                  pastor_form=pastor_form,
-                                 filho_form=filho_form,
+                                 #filho_form=filho_form,
                                  veiculo_form=veiculo_form)
 
 
@@ -173,8 +173,7 @@ class EditarPessoaView(CustomUpdateView):
             instance=self.object, prefix='endereco_form')
         pastor_form = PastorFormSet(
             instance=self.object, prefix='pastor_form')
-        filho_form = FilhoFormSet(
-            instance=self.object, prefix='filho_form')
+        #filho_form = FilhoFormSet(instance=self.object, prefix='filho_form')
         telefone_form = TelefoneFormSet(
             instance=self.object, prefix='telefone_form')
         email_form = EmailFormSet(
@@ -188,8 +187,8 @@ class EditarPessoaView(CustomUpdateView):
             endereco_form.extra = 0
         if Pastor.objects.filter(pastor_id=self.object.pk).count():
             pastor_form.extra = 0
-        if Filho.objects.filter(filho_id=self.object.pk).count():
-            filho_form.extra = 0
+        #if Filho.objects.filter(filho_id=self.object.pk).count():
+         #   filho_form.extra = 0
         if Email.objects.filter(pessoa_email=self.object.pk).count():
             email_form.extra = 0
         if Site.objects.filter(pessoa_site=self.object.pk).count():
@@ -203,7 +202,7 @@ class EditarPessoaView(CustomUpdateView):
                                                              pessoa_fisica_form=pessoa_fisica_form,
                                                              endereco_form=endereco_form,
                                                              pastor_form=pastor_form,
-                                                             filho_form=filho_form,
+                                                             #filho_form=filho_form,
                                                              formsets=formsets,
                                                              object=self.object))
 
@@ -216,8 +215,7 @@ class EditarPessoaView(CustomUpdateView):
             request.POST, prefix='endereco_form', instance=self.object)
         pastor_form = PastorFormSet(
             request.POST, prefix='pastor_form', instance=self.object)
-        filho_form = FilhoFormSet(
-            request.POST, prefix='filho_form', instance=self.object)
+        #filho_form = FilhoFormSet(request.POST, prefix='filho_form', instance=self.object)
 
         telefone_form = TelefoneFormSet(
             request.POST, prefix='telefone_form', instance=self.object)
@@ -245,7 +243,7 @@ class EditarPessoaView(CustomUpdateView):
                 pessoa_form.is_valid() and
                 endereco_form.is_valid() and
                 pastor_form.is_valid() and
-                filho_form.is_valid() and
+                #filho_form.is_valid() and
                     all(extra_form.is_valid() for extra_form in extra_forms)):
 
                 self.object = form.save(commit=False)
@@ -275,8 +273,8 @@ class EditarPessoaView(CustomUpdateView):
                 if len(pastor):
                     self.object.pastor_form = pastor[0]
 
-                filho_form.instance = self.object
-                filho = filho_form.save()
+                #filho_form.instance = self.object
+                #filho = filho_form.save()
 
                 # Salvar telefone
                 telefone_form.instance = self.object
@@ -320,7 +318,7 @@ class EditarPessoaView(CustomUpdateView):
                                  pessoa_fisica_form=pessoa_fisica_form,
                                  endereco_form=endereco_form,
                                  pastor_form=pastor_form,
-                                 filho_form=filho_form,
+                                 #filho_form=filho_form,
                                  formsets=formsets,
                                  veiculo_form=veiculo_form,
                                  logo_file=logo_file)
