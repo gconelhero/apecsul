@@ -56,7 +56,7 @@ class PastorForm(forms.ModelForm):
         }
 
         widgets = {
-            'ministerio': forms.Select(attrs={'class': 'form-control'}),
+            'funcao': forms.Select(attrs={'class': 'form-control'}),
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'cpf': forms.TextInput(attrs={'class': 'form-control'}),
             'rg': forms.TextInput(attrs={'class': 'form-control'}),
