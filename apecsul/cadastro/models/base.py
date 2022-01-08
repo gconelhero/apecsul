@@ -230,11 +230,19 @@ class PessoaFisica(models.Model):
 class Pastor(models.Model):
     pastor_id = models.ForeignKey(
         Pessoa, related_name="pastor", on_delete=models.CASCADE)
-    ministerio = models.CharField(max_length=64, null=True, blank=True, choices=(("Pastor", "Pastor"), ("Evangelista", "Evangelista")))
+    funcao = models.CharField(max_length=64, null=True, blank=True, choices=(("Pastor", "Pastor"), ("Evangelista", "Evangelista")))
     nome = models.CharField(max_length=64, null=True, blank=True)
+    nascimento = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=64, null=True, blank=True)
     rg = models.CharField(max_length=64, null=True, blank=True)
-    nascimento = models.DateField(null=True, blank=True)
+    logradouro = models.CharField(max_length=255, null=True, blank=True)
+    numero = models.CharField(max_length=16, null=True, blank=True)
+    bairro = models.CharField(max_length=64, null=True, blank=True)
+    complemento = models.CharField(max_length=64, null=True, blank=True)
+    municipio = models.CharField(max_length=64, null=True, blank=True)
+    cep = models.CharField(max_length=16, null=True, blank=True)
+    uf = models.CharField(max_length=3, null=True,
+                          blank=True, choices=UF_SIGLA)
 
     @property
     def format_cpf(self):

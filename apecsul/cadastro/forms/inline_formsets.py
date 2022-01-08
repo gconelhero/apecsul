@@ -38,13 +38,21 @@ class PastorForm(forms.ModelForm):
 
     class Meta:
         model = Pastor
-        fields = ('ministerio','nome','cpf','rg')
+        fields = ('funcao','nome','cpf','rg','logradouro', 'numero', 'bairro',
+                  'complemento', 'uf', 'cep', 'municipio')
 
         labels = {
-            'ministerio': _("Ministério"),
+            'funcao': _("Função"),
             'nome': _("Nome"),
             'cpf': _("CPF"),
             'rg': _("RG"),
+            'logradouro': _("Logradouro"),
+            'numero': _("Número"),
+            'bairro': _("Bairro"),
+            'complemento': _("Complemento"),
+            'municipio': _("Município (sem acentuação)"),
+            'cep': _("CEP (Apenas dígitos)"),
+            'uf': _("UF"),
         }
 
         widgets = {
@@ -52,6 +60,13 @@ class PastorForm(forms.ModelForm):
             'nome': forms.TextInput(attrs={'class': 'form-control'}),
             'cpf': forms.TextInput(attrs={'class': 'form-control'}),
             'rg': forms.TextInput(attrs={'class': 'form-control'}),
+            'logradouro': forms.TextInput(attrs={'class': 'form-control'}),
+            'numero': forms.TextInput(attrs={'class': 'form-control'}),
+            'bairro': forms.TextInput(attrs={'class': 'form-control'}),
+            'complemento': forms.TextInput(attrs={'class': 'form-control'}),
+            'municipio': forms.Select(attrs={'class': 'form-control'}),
+            'cep': forms.TextInput(attrs={'class': 'form-control'}),
+            'uf': forms.Select(attrs={'class': 'form-control'}),
         }
 
 
