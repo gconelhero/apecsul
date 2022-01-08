@@ -83,7 +83,7 @@ class AdicionarPessoaView(CustomCreateView):
                 pessoa_form.is_valid() and
                 endereco_form.is_valid() and
                 pastor_form.is_valid() and
-                filho_form.is_valid() and
+                #filho_form.is_valid() and
                     all(extra_form.is_valid() for extra_form in extra_forms)):
 
                 self.object.save()
