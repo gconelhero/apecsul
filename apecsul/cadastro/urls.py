@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from urllib import request
 from django.conf.urls import url
+from django.urls import path
+
+
+from apecsul.cadastro.views.views import igreja_view, igrejas_view
 from . import views
 
 app_name = 'cadastro'
@@ -19,4 +24,8 @@ urlpatterns = [
     # AJAX:: Informacoes de dada empresa (Ajax request)
     url(r'infocliente/$', views.InfoCliente.as_view(), name='infocliente'),
     url(r'selectcliente/', views.SelectFormCliente.as_view(), name='selectcliente'),
+    path('igreja_view/<int:pk>', igreja_view, name='igreja_view'),
+    path('igrejas_view/', igrejas_view, name='igrejas_view'),
+
+
 ]

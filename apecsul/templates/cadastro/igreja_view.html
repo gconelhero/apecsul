@@ -1,0 +1,140 @@
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tabela.css' %}">
+
+<h1 class="titulo">{{ fazenda.nome }}</h1>
+{% csrf_token %}
+<body>
+
+  <div id="desktop" class="table-responsive">
+    <table id="desktop" class="table">
+      <tr>
+        <th>Igreja:</th>
+        <th>CNPJ:</th>
+        <th>Fundação:</th>
+        <th>Endereço:</th>
+      </tr>
+      <tr>
+        <td>{{ fazenda.pessoa_id.nome_razao_social }}</td>
+        <td>{{ fazenda.cnpj }}</td>
+        <td>{{ fazenda.data_fundacao }}</td>
+        <td>{{ endereco.logradouro }} Nº {{ endereco.numero }}, {{ endereco.bairro }}, {{ endereco.municipio }} - {{ endereco.uf }}</td>
+      </tr>
+      <tr>
+        <th>Telefone:</th>
+        <th>Email:</th>
+        <th>Site:</th>
+        <th>Informações Adicionai:</th>
+      </tr>
+      <tr>
+        <td>{{ telefone.telefone }}</td>
+        <td>{{ email.email }}</td>
+        <td>{{ site.site }}</td>
+        <td>{{ fazenda.pessoa_id.cliente.informacoes_adicionais }}</td>
+      </tr>
+      {% for func in pastor%}
+      <tr>    
+        <th>Função:</th>
+        <th>Nome:</th>
+        <th>CPF:</th>
+        <th>RG:</th>    
+      </tr>
+      <tr>
+        <td>{{ func.funcao }}</td>
+        <td>{{ func.nome }}</td>
+        <td>{{ func.cpf }}</td>
+        <td>{{ func.rg }}</td>
+      </tr>
+      <tr>  
+        <th>Endereço:</th>
+        <th></th>
+        <th></th>
+        <th></th>    
+      </tr>
+      <tr>
+        <td>{{ func.logradouro }} Nº {{ func.numero }}, {{ func.bairro }}, {{ func.municipio }} - {{ func.uf }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        {% endfor %}
+      </tr>
+    </table>
+    <hr>
+  </div>
+  <div id="div-table-mobile" class="table-responsive">
+    <table id="table-mobile" class="table">
+      <tr>
+        <th>Igreja:</th>
+        <th>CNPJ:</th>
+      </tr>
+      <tr>
+        <td>{{ fazenda.pessoa_id.nome_razao_social }}</td>
+        <td>{{ fazenda.cnpj }}</td>
+      </tr>
+
+      <tr>
+        <th>Fundação:</th>
+        <th>Endereço:</th>
+      </tr>  
+      <tr>
+        <td>{{ fazenda.data_fundacao }}</td>
+        <td>{{ endereco.logradouro }} Nº {{ endereco.numero }}, {{ endereco.bairro }}, {{ endereco.municipio }} - {{ endereco.uf }}</td>
+      </tr>
+
+      <tr>
+        <th>Telefone:</th>
+        <th>Email:</th>
+      </tr>
+
+      <tr> 
+        <td>{{ telefone.telefone }}</td>
+        <td>{{ email.email }}</td>
+      </tr>
+      <tr>
+        <th>Site:</th>
+        <th>Informações Adicionai:</th>
+      </tr>
+      <tr>
+        
+        <td>{{ site.site }}</td>
+        <td>{{ fazenda.pessoa_id.cliente.informacoes_adicionais }}</td>
+      </tr>
+      {% for func in pastor%}
+      <tr>  
+        <th>Função:</th>
+        <th>Nome:</th>
+      </tr>
+      <tr>
+        <td>{{ func.funcao }}</td>
+        <td>{{ func.nome }}</td>
+      </tr>
+
+      <tr>
+        <th>CPF:</th>
+        <th>RG:</th>   
+      </tr>
+      <tr>
+        <td>{{ func.cpf }}</td>
+        <td>{{ func.rg }}</td>
+      </tr>
+      <tr>
+        <th>Endereço:</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>{{ func.logradouro }} Nº {{ func.numero }}, {{ func.bairro }}, {{ func.municipio }} - {{ func.uf }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <hr>
+  </div>
+</div>
+
+<footer>
+    
+</footer>
