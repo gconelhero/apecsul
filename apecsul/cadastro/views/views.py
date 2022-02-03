@@ -15,17 +15,7 @@ def igrejas_view(request):
                                 Site.objects.get(pk=igreja.pk)]
             igrajas_list.append(igreja_obj)
             
-            endereco = Endereco.objects.get(pk=igreja.pk)
-            pastor = Pastor.objects.all().filter(pastor_id=igreja.pk)
-            email = Email.objects.get(pk=igreja.pk)
-            telefone = Telefone.objects.get(pk=igreja.pk)
-            site = Site.objects.get(pk=igreja.pk)
         context = {'fazenda': igrejas,
-                   'endereco': endereco,
-                   'pastor': pastor,
-                   'email': email,
-                   #'telefone': telefone,
-                   'site': site,
                    'igrejas': igrajas_list,
                    }
         
