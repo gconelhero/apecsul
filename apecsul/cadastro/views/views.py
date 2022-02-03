@@ -5,18 +5,19 @@ from django.shortcuts import render, redirect
 def igrejas_view(request):
     if request.user.is_authenticated:
         igrejas = PessoaJuridica.objects.all()
-        igrajas_list = []
+        igrejas_list = []
         
         for igreja in igrejas:
-            igreja_obj = [igreja, Endereco.objects.get(pk=igreja.pk), 
-                                Pastor.objects.all().filter(pastor_id=igreja.pk), 
-                                Email.objects.get(pk=igreja.pk), 
-                                Telefone.objects.get(pk=igreja.pk), 
-                                Site.objects.get(pk=igreja.pk)]
-            igrajas_list.append(igreja_obj)
+            endereco = Endereco.objects.all().filter(pk=igreja.pk)
+            pastor = Pastor.objects.all().filter(pastor_id=igreja.pk)
+            email = Email.objects.all().filter(pk=igreja.pk)
+            telefone = Telefone.objects.all().filter(pk=igreja.pk)
+            site = Site.objects.all().filter(pk=igreja.pk)
+            igreja_obj = [igreja, endereco, pastor, email, telefone, site]
+            igrejas_list.append(igreja_obj)
             
         context = {'fazenda': igrejas,
-                   'igrejas': igrajas_list,
+                   'igrejas': igrejas_list,
                    }
         
         return render(request, 'cadastro/igrejas_view.html', context)

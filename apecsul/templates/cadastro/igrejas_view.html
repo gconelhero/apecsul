@@ -57,9 +57,9 @@
         <th>Informações Adicionais:</th>
       </tr>
       <tr>
-        <td>{{ igreja.4.telefone }}</td>
-        <td>{{ igreja.3.email }}</td>
-        <td>{{ igreja.5.site }}</td>
+        <td>{{ igreja.4.0.telefone }}</td>
+        <td>{{ igreja.3.0.email }}</td>
+        <td>{{ igreja.5.0.site }}</td>
         <td>{{ igreja.0.pessoa_id.informacoes_adicionais }}</td>
       </tr>
       
@@ -83,9 +83,10 @@
         <td>{{ igreja.2.0.logradouro }} Nº {{ igreja.2.0.numero }}, {{ igreja.2.0.bairro }}, {{ igreja.2.0.municipio }} - {{ igreja.2.0.uf }}</td>
       </tr>
       <br>
-      {% endfor %}
+      
     </table>
   </div>
+  {% endfor %}
   {% for igreja in igrejas %}
   <div id="div-table-mobile" class="table-responsive">
     <table id="table-mobile" class="table">
@@ -112,8 +113,8 @@
         <th>Email:</th>
       </tr>
 
-      <tr> 
-        <td>{{ igreja.4.telefone }}</td>
+      <tr>
+        <td>{{ igreja.4.telefone }}{{ igrejas }}</td>
         <td>{{ igreja.3.email }}</td>
       </tr>
       <tr>
@@ -144,9 +145,8 @@
       
     </table>
     <hr>
-    
-    {% endfor %}
   </div>
+  {% endfor %}
 </div>
 
 <footer>
