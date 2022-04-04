@@ -472,7 +472,7 @@ $.Admin.maskInput = {
     maskEmpresa: function() {
         $('input[name$="cnpj"]').mask('99.999.999/9999-99', {reverse: true});
         $(document).on('focus', 'input[name$="-telefone"]', function(){
-            $(this).mask('(99) 9999-9999A', {translation:{'A': {pattern: /[0-9]/, optional: true}}}).focusout(function (event) {
+            $(this).mask('(99) 99999-9999', {translation:{'A': {pattern: /[0-9]/, optional: true}}}).focusout(function (event) {
                 var target, phone, element;
                 target = (event.currentTarget) ? event.currentTarget : event.srcElement;
                 phone = target.value.replace(/\D/g, '');
@@ -492,7 +492,7 @@ $.Admin.maskInput = {
         $('input[name$="cpf"]').mask('999.999.999-99', {reverse: true});
         $('.decimal-mask').mask('000.000.000.000,00', {reverse: true});
         $(document).on('focus', 'input[name$="-telefone"]', function(){
-            $(this).mask('(99) 9999-9999A', {translation:{'A': {pattern: /[0-9]/, optional: true}}}).focusout(function (event) {
+            $(this).mask('(99) 99999-9999', {translation:{'A': {pattern: /[0-9]/, optional: true}}}).focusout(function (event) {
                 var target, phone, element;
                 target = (event.currentTarget) ? event.currentTarget : event.srcElement;
                 phone = target.value.replace(/\D/g, '');

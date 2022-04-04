@@ -16,7 +16,7 @@
     padding-bottom: 30px;
   }
   th {
-    font-size: 30px;
+    font-size: 25px;
   }
   #desktop{
     max-width: 2480px;
@@ -28,8 +28,14 @@
     width: auto;
     overflow: hidden;
     word-wrap: break-word;
+  }@media print
+{
+  table { page-break-after:auto }
+  table {
+    page-break-after: always;
   }
-  
+
+}
 
   @media only screen and (max-width: 800px) {
     .table-responsive#desktop {
@@ -67,21 +73,29 @@
     
   }
 </style>
-<h1 class="titulo">{{ fazenda.pessoa_id.nome_razao_social }}</h1>
 {% csrf_token %}
 <body>
   {% for igreja in igrejas %}
+  
   <div id="desktop" class="table-responsive">
     <table id="desktop" class="table">
-      
       <tr>
-        <th>Igreja:</th>
+        <h1 style="margin: 0px; border: 2px solid rgb(14, 14, 14) ; text-align: center;">
+            {{ igreja.0.pessoa_id.nome_razao_social }}
+        </h1>
+      </tr>
+      <tr>
+        <th>Endereço:</th>
         <th>CNPJ:</th>
         <th>Fundação:</th>
         <th>Endereço:</th>
       </tr>
       <tr>
-        <td>{{ igreja.0.pessoa_id.nome_razao_social }}</td>
+        {% if igreja.2.0 %}
+        <td>{{ igreja.2.0.logradouro }} Nº {{ igreja.2.0.numero }}, {{ igreja.2.0.bairro }}, {{ igreja.2.0.municipio }} - {{ igreja.2.0.uf }}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
         <td>{{ igreja.0.cnpj }}</td>
         <td>{{ igreja.0.data_fundacao }}</td>
         {% if igreja.1 %}
@@ -116,18 +130,6 @@
         <td>{{ igreja.2.0.cpf }}</td>
         <td>{{ igreja.2.0.rg }}</td>
       </tr>
-      <tr>  
-        <th>Endereço:</th>
-      </tr>
-      
-      <tr>
-        {% if igreja.2.0 %}
-        <td>{{ igreja.2.0.logradouro }} Nº {{ igreja.2.0.numero }}, {{ igreja.2.0.bairro }}, {{ igreja.2.0.municipio }} - {{ igreja.2.0.uf }}</td>
-        {% else %}
-        <td></td>
-        {% endif %}
-      </tr>
-      <br>
       
     </table>
   </div>

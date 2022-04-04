@@ -9,13 +9,18 @@
   <div id="desktop" class="table-responsive">
     <table id="desktop" class="table">
       <tr>
-        <th>Igreja:</th>
+        <th>
+          {{ fazenda.pessoa_id.nome_razao_social }}
+        </th>
+      </tr>
+      <tr>
+        <th>Endereço:</th>
         <th>CNPJ:</th>
         <th>Fundação:</th>
         <th>Endereço:</th>
       </tr>
       <tr>
-        <td>{{ fazenda.pessoa_id.nome_razao_social }}</td>
+        <td>{{ func.logradouro }} Nº {{ func.numero }}, {{ func.bairro }}, {{ func.municipio }} - {{ func.uf }}</td>
         <td>{{ fazenda.cnpj }}</td>
         <td>{{ fazenda.data_fundacao }}</td>
         <td>{{ endereco.logradouro }} Nº {{ endereco.numero }}, {{ endereco.bairro }}, {{ endereco.municipio }} - {{ endereco.uf }}</td>
@@ -46,13 +51,13 @@
         <td>{{ func.rg }}</td>
       </tr>
       <tr>  
-        <th>Endereço:</th>
+        
         <th></th>
         <th></th>
         <th></th>    
       </tr>
       <tr>
-        <td>{{ func.logradouro }} Nº {{ func.numero }}, {{ func.bairro }}, {{ func.municipio }} - {{ func.uf }}</td>
+        
         <td></td>
         <td></td>
         <td></td>

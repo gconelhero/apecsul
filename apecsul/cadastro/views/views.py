@@ -6,7 +6,6 @@ def igrejas_view(request):
     if request.user.is_authenticated:
         igrejas = PessoaJuridica.objects.all()
         igrejas_list = []
-        
         for igreja in igrejas:
             endereco = Endereco.objects.all().filter(pk=igreja.pk)
             pastor = Pastor.objects.all().filter(pastor_id=igreja.pk)

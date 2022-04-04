@@ -2,3 +2,4 @@ django
 python-decouple
 dj-database-url
 Pillow
+xhtml2pdf==0.2.5
